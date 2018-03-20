@@ -7,8 +7,11 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
-with open(path.join(here, 'README'), encoding='utf-8') as f:
-    long_description = f.read()
+try:
+    with open(path.join(here, 'README'), encoding='utf-8') as f:
+        long_description = f.read()
+except FileNotFoundError:
+    long_description = ""
 
 setup(
     name='redis-ratelimit',
