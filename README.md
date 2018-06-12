@@ -1,15 +1,13 @@
 # redis-ratelimit
 
-[![Build Status](https://travis-ci.org/r00m/redis-ratelimit.svg?branch=master)](https://travis-ci.org/r00m/redis-ratelimit)
+![Travis](https://img.shields.io/travis/romantomjak/redis-ratelimit.svg)
+![Coveralls](https://img.shields.io/coveralls/github/romantomjak/redis-ratelimit.svg)
+![PyPI](https://img.shields.io/pypi/v/redis-ratelimit.svg)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/redis-ratelimit.svg)
 
-A fixed window rate limiting based on Redis
+A fixed window rate limiter based on Redis
 
 ---
-
-## Requirements
-
-- Python >= 3.6
-- Redis >= 2
 
 ## Installation
 
@@ -17,12 +15,9 @@ A fixed window rate limiting based on Redis
 $ pip install redis-ratelimit
 ```
 
-**NB!** redis-ratelimit requires a running Redis server. See [Redis's quickstart](http://redis.io/topics/quickstart)
- for installation instructions.
+## Example Usage
 
-## Getting started
-
-Assuming you have [Flask](http://flask.pocoo.org/docs/0.12/) installed:
+The library itself is framework agnostic, but let's assume you want to use it with [Flask](http://flask.pocoo.org/docs/0.12/):
 
 ```python
 from flask import Flask, jsonify

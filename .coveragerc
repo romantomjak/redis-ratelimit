@@ -1,0 +1,12 @@
+[run]
+branch = True
+
+omit =
+    */python*/dist-packages/*
+    */python*/site-packages/*
+    */python*/distutils/*
+    */pyshared/*
+    */pytest
+    */setup.py
+    */tests.py
+    */redis_ratelimit/__init__.py

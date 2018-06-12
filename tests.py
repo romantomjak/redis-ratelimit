@@ -1,9 +1,14 @@
-import unittest
 import time
+import unittest
+import uuid
 
 from redis_ratelimit.decorators import ratelimit
 from redis_ratelimit.exceptions import RateLimited
 from redis_ratelimit.utils import parse_rate
+
+
+def random_key():
+    return uuid.uuid4()
 
 
 class RateParsingTests(unittest.TestCase):
@@ -22,15 +27,19 @@ class RateParsingTests(unittest.TestCase):
 
 
 class DecoratorTests(unittest.TestCase):
+
+    def setUp(self):
+        self.key = random_key()
+
     def test_view(self):
-        @ratelimit(rate='5/s', key='aaa')
+        @ratelimit(rate='5/s', key=self.key)
         def view():
             return True
 
         assert view()
 
     def test_rate_limit_exception(self):
-        @ratelimit(rate='5/s', key='bbb')
+        @ratelimit(rate='5/s', key=self.key)
         def view():
             return True
 
@@ -41,8 +50,8 @@ class DecoratorTests(unittest.TestCase):
             view()
 
     def test_rate_limit_groups(self):
-        @ratelimit(rate='10/m', key='ccc')
-        @ratelimit(rate='5/s', key='ccc')
+        @ratelimit(rate='10/m', key=self.key)
+        @ratelimit(rate='5/s', key=self.key)
         def view():
             return True
 
