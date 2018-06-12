@@ -25,7 +25,6 @@ from redis_ratelimit import ratelimit
 
 app = Flask(__name__)
 
-
 @app.route('/')
 @ratelimit(rate='10/m', key='ccc')
 @ratelimit(rate='2/s', key='ccc')

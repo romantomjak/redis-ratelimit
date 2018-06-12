@@ -20,6 +20,7 @@ setup(
     version=VERSION,
     description='A fixed window rate limiter based on Redis',
     long_description=long_description,
+    long_description_content_type='text/markdown',
     url='https://github.com/romantomjak/redis-ratelimit',
     author='Roman Tomjak',
     author_email='r.tomjaks@gmail.com',
